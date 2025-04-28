@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 Flask
 twilio
 python-dotenv
-=======
-Flask
-twilio
-python-dotenv
->>>>>>> fbdc56de39e47432135806635a8a8145cf41bd37

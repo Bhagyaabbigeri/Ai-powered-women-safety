@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from twilio.rest import Client
-import os
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
@@ -17,11 +17,13 @@ def send_alert():
     lat = data.get('lat')
     lon = data.get('lon')
 
-    # Load credentials from environment
-    account_sid = os.getenv('TWILIO_SID')
-    auth_token = os.getenv('TWILIO_TOKEN')
-    twilio_number = os.getenv('TWILIO_NUMBER')
-    to_number = os.getenv('RECIPIENT_NUMBER')
+    print(f"[+] Received location: Latitude={lat}, Longitude={lon}")
+
+    # Twilio credentials from .env
+    account_sid = os.environ.get("TWILIO_SID")
+    auth_token = os.environ.get("TWILIO_TOKEN")
+    twilio_number = os.environ.get("TWILIO_NUMBER")
+    to_number = os.environ.get("RECIPIENT_NUMBER")
 
     client = Client(account_sid, auth_token)
 
@@ -33,7 +35,4 @@ def send_alert():
         to=to_number
     )
 
-    return '', 204
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    print(f
